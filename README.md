@@ -1,6 +1,6 @@
 # Scraperd
 
-Scraperd is a very simple scraper for the public user activity RSS in [Letterboxd](http://letterboxd.com). It relies in OpenStruct to build objects.
+Scraperd is a very simple scraper for the public user activity RSS in [Letterboxd](http://letterboxd.com). It relies on OpenStruct to build objects.
 
 
 ## Installation
