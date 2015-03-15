@@ -7,13 +7,13 @@ module Scraperd
     
     def initialize(item)
       super(Hashie::Mash.new({
-          title:              title_from_title(item[:title]),
-          score:              score_from_title(item[:title]),
-          link:               item[:link].force_encoding("UTF-8"),
-          film_link:          "http://letterboxd.com/film/#{nicetitle_from_url(item[:link])}/".force_encoding("UTF-8"),
-          watched_at:         watched_at_from_description(item[:description]),
-          added_at:           item[:pubDate],
-          original_response:  item
+          id:         item[:guid].force_encoding("UTF-8"),
+          title:      title_from_title(item[:title]),
+          score:      score_from_title(item[:title]),
+          link:       item[:link].force_encoding("UTF-8"),
+          film_link:  "http://letterboxd.com/film/#{nicetitle_from_url(item[:link])}/".force_encoding("UTF-8"),
+          watched_at: watched_at_from_description(item[:description]),
+          added_at:   item[:pubDate]
         })
       )      
     end

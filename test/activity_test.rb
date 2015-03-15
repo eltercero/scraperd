@@ -17,5 +17,6 @@ class ActivityTest < MiniTest::Unit::TestCase
     assert_equal activity.film_link, "http://letterboxd.com/film/nausicaa-of-the-valley-of-the-wind/"
     assert_equal activity.watched_at, Time.parse("Saturday March 14, 2015.")
     assert_equal activity.added_at, Time.new('2015-03-14 19:45:50 +0100')
+    assert_equal activity.id, "letterboxd-watch-7911516"
   end
 end
