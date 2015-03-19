@@ -9,6 +9,7 @@ module Scraperd
       super(Hashie::Mash.new({
           id:         item[:guid].force_encoding("UTF-8"),
           title:      title_from_title(item[:title]),
+          year:       year_from_title(item[:title]),
           score:      score_from_title(item[:title]),
           link:       item[:link].force_encoding("UTF-8"),
           film_link:  "http://letterboxd.com/film/#{nicetitle_from_url(item[:link])}/".force_encoding("UTF-8"),
@@ -28,7 +29,17 @@ module Scraperd
     end
 
     def title_from_title(title)
-      title.split(' - ')[0..-2].join(' - ').force_encoding("UTF-8")
+      title.split(' - ')[0..-2].join(' - ')
+        .split(',')[0..-2].join(',')
+        .strip
+        .force_encoding("UTF-8")
+    end
+
+    def year_from_title(title)
+      title.split(' - ')[0..-2].join(' - ')
+        .split(',').last
+        .strip
+        .force_encoding("UTF-8")
     end
 
     def score_from_title(title)

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ActivityTest < MiniTest::Unit::TestCase
+class ActivityTest < MiniTest::Test
   def test_activity_conversion
     item = {  :title => "Nausica\xC3\xA4 of the Valley of the Wind, 1984 - \xE2\x98\x85\xE2\x98\x85\xE2\x98\x85\xC2\xBD", 
               :link => "http://letterboxd.com/eltercero/film/nausicaa-of-the-valley-of-the-wind/", 
@@ -11,7 +11,8 @@ class ActivityTest < MiniTest::Unit::TestCase
 
     activity = Scraperd::Activity.new(item)
 
-    assert_equal activity.title, "Nausica\xC3\xA4 of the Valley of the Wind, 1984"
+    assert_equal activity.title, "Nausica\xC3\xA4 of the Valley of the Wind"
+    assert_equal activity.year, "1984"
     assert_equal activity.score, 7
     assert_equal activity.link, "http://letterboxd.com/eltercero/film/nausicaa-of-the-valley-of-the-wind/"
     assert_equal activity.film_link, "http://letterboxd.com/film/nausicaa-of-the-valley-of-the-wind/"
